@@ -204,20 +204,7 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-
-        this.setLocation(x - xx, y - xy);
-    }//GEN-LAST:event_jPanel1MouseDragged
-
-    private void jPanel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseMoved
-        xx = evt.getX();
-        xy = evt.getY();
-    }//GEN-LAST:event_jPanel1MouseMoved
-
-    private void btnInicarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicarSesionActionPerformed
-
+    private  void inciar(){
         try {
             this.usuario = this.textUsuario.getText();
             this.password = this.textPass.getText();
@@ -244,7 +231,23 @@ public class Login extends javax.swing.JFrame {
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "Error\n" + e.getMessage());
         }
+    }
+    
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
 
+        this.setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_jPanel1MouseDragged
+
+    private void jPanel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseMoved
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_jPanel1MouseMoved
+
+    private void btnInicarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicarSesionActionPerformed
+
+        inciar();
 
     }//GEN-LAST:event_btnInicarSesionActionPerformed
 
@@ -263,35 +266,8 @@ public class Login extends javax.swing.JFrame {
 
     private void textPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPassKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                this.usuario = this.textUsuario.getText();
-                this.password = this.textPass.getText();
-                
-                if (!this.usuario.equals("") && !this.password.equals("")) {
-                    if (validarUsuario(usuario)) {
-                        if (validarSesion(usuario, password)) {
-                            Home home = new Home();
-                            home.reportesInicio();
-                            home.obtenerIdUsuario(this.usuario);
-                            home.setVisible(true);
-                            this.setVisible(false);
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Contraseña incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Ese usuario no existe en nuestra base de datos"
-                                + "\nPor favor intente con otro..", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Parece que uno o todos los campos estan vacios"
-                            + "\nEstos campos son requeridos", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } catch (HeadlessException e) {
-                JOptionPane.showMessageDialog(null, "Error\n" + e.getMessage());
-            }
+            inciar();
         }
-        
-
 
     }//GEN-LAST:event_textPassKeyPressed
 
